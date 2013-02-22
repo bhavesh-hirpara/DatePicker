@@ -1,16 +1,36 @@
 ![Screenshot](https://github.com/luminousman/DatePicker/blob/master/screenshot.png)
 
+``` java
+@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
 
-Copyright 2013 luminousman
+		DatePicker d = (DatePicker) findViewById(R.id.datePicker1);
+		d.setDateChangedListener(this);
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+		try {
+			d.setStartYear(2000);
+			d.setEndYear(2009);
+		} catch (Exception e) {
+			Log.e("", e.toString());
+		}
 
-    http://www.apache.org/licenses/LICENSE-2.0
+		TimePicker t = (TimePicker) findViewById(R.id.timePicker2);
+		t.setTimeChangedListener(this);
+		t.setCurrentTimeFormate(TimePicker.HOUR_12);
+		t.setAMPMVisible(true);
+	}
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+	@Override
+	public void onDateChanged(Calendar c) {
+		Log.e("",
+				"" + c.get(Calendar.MONTH) + " " + c.get(Calendar.DAY_OF_MONTH)
+						+ " " + c.get(Calendar.YEAR));
+	}
+
+	@Override
+	public void onTimeChanged(int h, int m, int am_pm) {
+		Log.e("", "" + h + " " + m + " " + am_pm);
+	}
+```
