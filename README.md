@@ -1,4 +1,4 @@
-![Screenshot](https://github.com/luminousman/DatePicker/blob/master/screenshot.png)
+![Screenshot](https://raw.github.com/luminousman/DatePicker/master/screenshot.png)
 
 ``` java
 @Override
